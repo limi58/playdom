@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>playdom</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>demo</h1>
+  <script src='../dist/playdom.js' type='text/javascript'></script>
+  <script>
+    var p = playdom()
+    window.addEventListener('scroll', function() {
+      console.log(p.isTouchBottom())
+    })
+  </script>
+</body>
+
+</html>

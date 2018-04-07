@@ -9,17 +9,41 @@
     body {
       height: 2000px;
     }
+    .box{
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background: #999;
+    }
   </style>
 </head>
 
 <body>
-  <h1>demo</h1>
-  <script src='../dist/playdom.js' type='text/javascript'></script>
+  <h1>demo（open devtool）</h1>
+  <div class="box" id="box"></div>
+  <script src='../dist/playdom.min.js' type='text/javascript'></script>
   <script>
-    var p = playdom()
+    const p = playdom('#box')
+    let isTouchBox = false
     window.addEventListener('scroll', function() {
       console.log(p.isTouchBottom())
     })
+    document.addEventListener('touchmove', e => e.preventDefault())
+    p.DOM.addEventListener('touchstart', e => isTouchBox = true)
+    p.DOM.addEventListener('touchmove', e => {
+      const x = e.touches[0].clientX
+      const y = e.touches[0].clientY
+      p.DOM.style.top = y + 'px'
+      p.DOM.style.left = x + 'px'
+    })
+    p.DOM.addEventListener('touchend', e => {
+      isTouchBox = false
+      console.log(`offsetTop: ${p.getOffset().top} offsetLeft: ${p.getOffset().left}`)
+    })
+    
+    console.log(`width: ${p.getRect().width}, height: ${p.getRect().height}`)
   </script>
 </body>
 

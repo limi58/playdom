@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/playdom.js",
   "scripts": {
-    "start": "babel --watch ./src/playdom.js --out-file ./dist/playdom.js"
+    "start": "babel --watch ./src/playdom.js --out-file ./dist/playdom.js",
+    "build": "uglifyjs ./dist/playdom.js -o ./dist/playdom.min.js -m -c"
   },
   "author": "limi58",
   "license": "MIT",

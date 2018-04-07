@@ -1,8 +1,3 @@
-/**
- * get dom by css express
- * @param  {string} sele
- * @return {object}
- */
 function PlayDOM(selector) {
   if (selector instanceof HTMLElement) {
     this.DOM = selector
@@ -16,11 +11,6 @@ PlayDOM.prototype = {
     return document.body.scrollTop || document.documentElement.scrollTop
   },
 
-  /**
-   * add class on dom
-   * @param  {string} className
-   * @return {boolean}
-   */
   addClass: function (className) {
     if (this.hasClass(className)) return this
     this.DOM.className = this._getArrayBySpaceString(this.DOM.className).concat(className).join(' ')
@@ -35,20 +25,10 @@ PlayDOM.prototype = {
     }
   },
 
-  /**
-   * the dom has class ?
-   * @param  {string}  className
-   * @return {Boolean}
-   */
   hasClass: function (className) {
     return this._getArrayBySpaceString(this.DOM.className).indexOf(className) > -1
   },
 
-  /**
-   * remove the class
-   * @param  {string} className
-   * @return this
-   */
   removeClass: function (className) {
     if (!this.hasClass(className)) return this
     this.DOM.className = this._getArrayBySpaceString(this.DOM.className).filter((data) => {
@@ -57,24 +37,38 @@ PlayDOM.prototype = {
     return this
   },
 
-  /**
-   * get a array by split a string space
-   * @param  {string} string
-   * @return {array}
-   */
+  // 'a b c ' => ['a', 'b', 'c']
   _getArrayBySpaceString: function (string) {
     return string.split(' ').filter(data => data !== '')
   },
+
   // document total height
   getScrollHeight() {
     return document.body.scrollHeight || document.documentElement.scrollHeight
   },
+
   // document height
   getWindowHeight() {
     return document.documentElement.clientHeight
   },
+
   isTouchBottom(distance = 300) {
     return this.getScrollTop() + this.getWindowHeight() + distance >= this.getScrollHeight()
+  },
+
+  getRect () {
+    return this.DOM.getBoundingClientRect()
+  },
+
+  getOffset () {
+    return {
+      top: this.getRect().top + window.pageYOffset - document.documentElement.clientTop,
+      left: this.getRect().left + window.pageXOffset - document.documentElement.clientLeft,
+    }
+  },
+
+  getPosition () {
+    return { left: this.DOM.offsetLeft, top: this.DOM.offsetTop }
   },
 }
 

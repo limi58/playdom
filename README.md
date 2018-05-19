@@ -18,9 +18,13 @@ or
 
 * el.getPosition().top // 5
 
+* el.show(display = 'block')
+
+* el.hide()
+
+* el.toggle(display = 'block')
+
 * playdom().getScrollTop() // 123
 
 * playdom().isTouchBottom(200) // true
-
-
 

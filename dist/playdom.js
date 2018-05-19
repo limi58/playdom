@@ -82,6 +82,25 @@
     },
     getPosition: function getPosition() {
       return { left: this.DOM.offsetLeft, top: this.DOM.offsetTop };
+    },
+    show: function show() {
+      var display = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'block';
+
+      this.DOM.style.display = display;
+      return this;
+    },
+    hide: function hide() {
+      this.DOM.style.display = 'none';
+      return this;
+    },
+    toggle: function toggle() {
+      var display = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'block';
+
+      if (this.DOM.style.display === 'none') {
+        this.DOM.style.display = display;
+      } else {
+        this.DOM.style.display = 'none';
+      }
     }
   };
 

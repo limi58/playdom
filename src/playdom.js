@@ -70,6 +70,24 @@ PlayDOM.prototype = {
   getPosition () {
     return { left: this.DOM.offsetLeft, top: this.DOM.offsetTop }
   },
+
+  show (display = 'block') {
+    this.DOM.style.display = display
+    return this
+  },
+
+  hide () {
+    this.DOM.style.display = 'none'
+    return this
+  },
+
+  toggle (display = 'block') {
+    if (this.DOM.style.display === 'none') {
+      this.DOM.style.display = display
+    } else {
+      this.DOM.style.display = 'none'
+    }
+  },
 }
 
 

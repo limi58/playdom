@@ -26,6 +26,27 @@
   <script src='../dist/playdom.min.js' type='text/javascript'></script>
   <script>
     const p = playdom('#box')
+    
+    testDisplay()
+    function testDisplay () {
+      setTimeout(() => {
+        p.hide()
+        console.log('hide')
+      }, 1000)
+      setTimeout(() => {
+        p.show()
+        console.log('show')
+      }, 3000)
+      setTimeout(() => {
+        p.toggle()
+        console.log('toggle')
+      }, 4000)
+      setTimeout(() => {
+        p.toggle()
+        console.log('toggle')
+      }, 5000)
+    }
+
     let isTouchBox = false
     window.addEventListener('scroll', function() {
       console.log(p.isTouchBottom())

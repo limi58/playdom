@@ -1,8 +1,8 @@
 function PlayDOM(selector) {
   if (selector instanceof HTMLElement) {
-    this.DOM = selector
+    this.DOM = this.dom = selector
   } else {
-    this.DOM = document.querySelector(selector)
+    this.DOM = this.dom = document.querySelector(selector)
   }
 }
 
